@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Testing — Experiment Tracker</title>
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --surface: #131a2a;
+      --accent: #22c55e;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --card-bg: #182234;
+      --pass: #22c55e;
+      --fail: #ef4444;
+      --warn: #eab308;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+    header { text-align: center; padding: 3rem 1rem 1rem; border-bottom: 1px solid #1e293b; }
+    header h1 { font-size: 2.5rem; color: var(--accent); }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-top: 0.5rem; }
+    main { flex: 1; max-width: 800px; margin: 0 auto; padding: 2rem 1rem; width: 100%; }
+    .stats-row { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .stat-card {
+      flex: 1; min-width: 120px; background: var(--card-bg); border: 1px solid #2d3a4e;
+      border-radius: 10px; padding: 1.25rem; text-align: center;
+    }
+    .stat-card .value { font-size: 2rem; font-weight: 700; }
+    .stat-card .label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+    .stat-card.pass .value { color: var(--pass); }
+    .stat-card.fail .value { color: var(--fail); }
+    .stat-card.warn .value { color: var(--warn); }
+    .experiments h2 { font-size: 1.3rem; color: var(--accent); margin-bottom: 1rem; }
+    .exp-card {
+      background: var(--card-bg); border: 1px solid #2d3a4e; border-radius: 10px;
+      padding: 1.25rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center;
+    }
+    .exp-card .name { font-weight: 600; }
+    .exp-card .detail { font-size: 0.85rem; color: var(--muted); }
+    .status { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+    .status.pass { background: #065f46; color: #86efac; }
+    .status.fail { background: #7f1d1d; color: #fca5a5; }
+    .status.running { background: #713f12; color: #fde047; }
+    .exp-dir-note { margin-top: 2rem; padding: 1rem; background: var(--surface); border-radius: 8px; border: 1px dashed #2d3a4e; text-align: center; color: var(--muted); font-size: 0.9rem; }
+    .exp-dir-note code { background: #1e293b; padding: 0.15rem 0.4rem; border-radius: 3px; }
+    footer { text-align: center; padding: 1.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid #1e293b; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧪 World Testing</h1>
+    <p class="tagline">Experiment tracker & quality assurance dashboard.</p>
+  </header>
+  <main>
+    <div class="stats-row">
+      <div class="stat-card pass">
+        <div class="value">23</div>
+        <div class="label">Passed</div>
+      </div>
+      <div class="stat-card fail">
+        <div class="value">2</div>
+        <div class="label">Failed</div>
+      </div>
+      <div class="stat-card warn">
+        <div class="value">1</div>
+        <div class="label">Running</div>
+      </div>
+      <div class="stat-card">
+        <div class="value" style="color:var(--text)">98.2%</div>
+        <div class="label">Pass Rate</div>
+      </div>
+    </div>
+    <section class="experiments">
+      <h2>Recent Experiments</h2>
+      <div class="exp-card">
+        <div>
+          <div class="name">EXP-042 — Agent coordination latency test</div>
+          <div class="detail">Batch 4 · 12/12 passed · 340ms avg</div>
+        </div>
+        <span class="status pass">PASS</span>
+      </div>
+      <div class="exp-card">
+        <div>
+          <div class="name">EXP-041 — SLM code gen benchmark v3</div>
+          <div class="detail">Batch 3 · 11/12 passed · 1 failure in edge case</div>
+        </div>
+        <span class="status pass">PASS</span>
+      </div>
+      <div class="exp-card">
+        <div>
+          <div class="name">EXP-040 — Cross-model embedding alignment</div>
+          <div class="detail">Batch 2 · 0/5 passed · Embedding drift detected</div>
+        </div>
+        <span class="status fail">FAIL</span>
+      </div>
+    </section>
+    <div class="exp-dir-note">
+      📊 Full experiment logs in <code>experiments/</code> directory.
+    </div>
+  </main>
+  <footer>
+    <p>World Testing · Operated by Iron · Moltbook Empire</p>
+  </footer>
+</body>
+</html>
